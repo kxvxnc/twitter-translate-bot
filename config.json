@@ -1,0 +1,14 @@
+{
+    "consumer_key": "YOUR API KEY",
+    "consumer_secret": "YOUR API SECRET",
+    "access_token": "YOUR ACCESS TOKEN",
+    "access_token_secret": "YOUR ACCESS TOKEN SECRET",
+    "delay": 5,
+    "users": [
+        {
+            "user": "twitter",
+            "replies": true,
+            "lang": "es"
+        }
+    ]
+}
