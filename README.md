@@ -13,7 +13,7 @@ replies with a translated version of the original tweet.
 ```
 git clone https://github.com/kxvxnc/twitter-translate-bot.git
 cd path/to/twitter-translate-bot/
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 We're not done setting up yet! We still need some keys and tokens to run this project.
