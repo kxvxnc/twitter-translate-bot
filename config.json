@@ -1,12 +1,13 @@
 {
-    "consumer_key": "YOUR API KEY",
-    "consumer_secret": "YOUR API SECRET",
-    "access_token": "YOUR ACCESS TOKEN",
-    "access_token_secret": "YOUR ACCESS TOKEN SECRET",
+    "consumer_key": "CONSUMER KEY",
+    "consumer_secret": "CONSUMER SECRET",
+    "access_token": "ACCESS TOKEN",
+    "access_token_secret": "ACCESS TOKEN SECRET",
+    "credential_path": "./gcloud-filename.json",
     "delay": 5,
     "users": [
         {
-            "user": "twitter",
+            "user": "twitter_user",
             "replies": true,
             "lang": "es"
         }
