@@ -1,16 +1,14 @@
 from google.cloud import translate_v2 as translate
 import six
 import os
+import json
 
-credential_path = r"PATH TO GOOGLE CLOUD CREDENTIAL FILE"
+config_file = open("config.json", "r")
+config = json.load(config_file)
+credential_path = config["credential_path"]
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
 
 translate_client = translate.Client()
-
-# def list_languages():
-#     results = translate_client.get_languages()
-#     for language in results:
-#         print(u'{name} ({language})'.format(**language))
 
 def translate_text(target, text):
     if isinstance(text, six.binary_type):
