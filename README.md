@@ -1,74 +1,68 @@
-# Tweet Translator Bot
+# Twitter Translate Bot
 
-This bot monitors a user for new tweets every n seconds and automatically 
-replies with a translated version of the original tweet.
-
-
-## Demo
-![Tweet Translate Demo](https://github.com/kxvxnc/images/blob/master/translatebotdemo.gif)
+This bot monitors user(s) for new tweets every x seconds and automatically replies with a translated version of the original tweet.
 
 
-## Installing / Getting started
+## Features
+
+* Monitors a user for new tweets and replies with a translated version of tweet
+* Supports multiple users
+* Ignores tweets/retweets/replies with no text or only images
+* Filters out t.co hyperlinks to avoid relinking and reposting
+* Clear and concise logging/error handling messages
+
+
+## Installation
 
 ```
 git clone https://github.com/kxvxnc/twitter-translate-bot.git
 cd path/to/twitter-translate-bot/
-pip install -r requirements.txt
 ```
+We're not done yet! We still need some tokens and configurations to run it.
 
-We're not done setting up yet! We still need some keys and tokens to run this project.
 
+## Configuration
 
-### Initial Configuration
-
-1. Apply for a twitter [developer account](https://developer.twitter.com/en/application/use-case) if you haven't already
-2. Create a new project on the dashboard with Read and Write permissions
-3. Generate your consumer keys and Authentication Tokens(make sure these are created with read/write permissions) 
-and put them in the `config.json` file
+1. Apply for a twitter [developer account](https://developer.twitter.com/en/application/use-case) and create a new 
+project on the dashboard with Read and Write permissions
+2. Generate your consumer API keys and authentication tokens and put them in the `config.json` file
 ```
     "consumer_key": "YOUR API KEY",
     "consumer_secret": "YOUR API SECRET",
     "access_token": "YOUR ACCESS TOKEN",
     "access_token_secret": "YOUR ACCESS TOKEN SECRET",
 ```
-4. Create a [google cloud console project](https://cloud.google.com/translate/docs/basic/setup-basic) 
-and enable the google translate API.
-5. Download the private key as JSON and paste the full path in `translate.py`
+3. Create a [Google Cloud console project](https://cloud.google.com/translate/docs/basic/setup-basic) and enable the google translate API.
+4. Download the private key as a JSON file into the project directory and paste the path in `config.json`
 ```
-credential_path = r"PATH TO GOOGLE CLOUD CREDENTIAL FILE"
+    "credential_path": "./gcloud-filename.json",
 ```
+5. Edit the `config.json` for custom configuration
+* `"delay"` is how many seconds it sleeps between monitoring
+* `"user"` is the @ of the user you want to monitor
+* You can choose if you want to monitor for replies by setting `"replies"` to `true` or `false`
+* `"lang"` can be any language in `languages.txt`
+* You are able to add more than 1 user; just add a new object
+
+Note: Keep the requests to 900 every 15 minutes; don't exceed 1 request per second (Twitter API Rate Limit)
 
 
-## Features
+## Running / Deploying
 
-Monitors a user for new tweets every n seconds
-* Once the change is detected, a translated tweet will be sent as a reply to the new tweet
-* Ignores tweets/retweets/replies with no text or only images
-* Filters out t.co hyperlinks to avoid relinking to an original tweet and reposting images
-* Supports multiple users
-* Easy to understand logging and error handling
+This project can be ran on localhost and Docker but has not been tested for large-scale use.
 
+### Localhost
+1. `pip install -r requirements.txt`
+2. `python3 main.py`
 
-## Configuration
-
-Edit the `config.json` for custom configuration
-* The delay is how many seconds it sleeps between monitoring
-* Translates to any language available in `languages.txt`
-* You can choose if you want to monitor for replies by setting replies to true or false
-* You are able to add more than 1 user; just follow the format
-* Keep the requests to 900 every 15 minutes; don't exceed 1 request per second
+### Docker
+1. `docker build -t image_name .`
+2. `docker run image_name`
 
 
 ## Contributing
 
-If you would like to contribute, please fork the repository and use a feature branch. 
-Pull requests are welcome.
-
-
-## Deploying / Publishing
-
-This project currently only works on localhost and has not been tested/deployed for large-scale use.
-
+If you would like to contribute, please fork the repository and use a feature branch. Pull requests are welcome.
 
 ## Links
 
