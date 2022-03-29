@@ -7,8 +7,8 @@ config_file = open("config.json", "r")
 config = json.load(config_file)
 credential_path = config["credential_path"]
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
-
 translate_client = translate.Client()
+
 
 def translate_text(target, text):
     if isinstance(text, six.binary_type):

@@ -4,6 +4,7 @@ import tweepy
 import json
 import threading
 
+
 def main():
     logger = utils.Logger("MAIN")
     try:
@@ -15,7 +16,7 @@ def main():
         access_token_secret = config["access_token_secret"]
         logger.success("Credentials loaded.")
     except Exception as e:
-        logger.error(f"Failed loading config.json: {e}")
+        logger.error(f"Failed loading config.json.\n{e}")
 
     try:
         logger.info("Initializing API...")
@@ -24,18 +25,21 @@ def main():
         api = tweepy.API(auth)
         logger.success("Initialization successful!")
     except Exception as e:
-        logger.error(f"Initialization failed: {e}")
+        logger.error(f"Initialization failed.\n{e}")
         return
 
     try:
         threads = []
         for user in config["users"]:
-            thread = threading.Thread(target=twitter.TwitterUser, args=(user["user"], config["delay_seconds"], user["lang"], user["replies"], api))
+            thread = threading.Thread(target=twitter.TwitterUser, args=(
+                user["user"], config["delay_seconds"], user["lang"],
+                user["replies"], api))
             threads.append(thread)
             thread.start()
             logger.success(f"Thread started for user: {user['user']}")
     except Exception as e:
-        logger.error(f"Error running main.py: {e}")
+        logger.error(f"Error running main.py.\n{e}")
+
 
 if __name__ == "__main__":
     main()
