@@ -4,9 +4,9 @@ import translate
 import re
 
 class TwitterUser:
-    def __init__(self, user, delay, target_lang, replies, api):
+    def __init__(self, user, delay_seconds, target_lang, replies, api):
         self.user = user
-        self.delay = delay
+        self.delay_seconds = delay_seconds
         self.logger = utils.Logger("USER", user)
         self.api = api
         self.id = None
@@ -62,7 +62,7 @@ class TwitterUser:
                                 self.send_tweet(translated)
             except Exception as e:
                 self.logger.error(f"Error: {e}")
-            time.sleep(self.delay)
+            time.sleep(self.delay_seconds)
 
     def translate_tweet(self, raw_text):
         if self.tweet_lang != self.target_lang:

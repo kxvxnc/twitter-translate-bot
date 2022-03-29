@@ -4,7 +4,7 @@
     "access_token": "ACCESS TOKEN",
     "access_token_secret": "ACCESS TOKEN SECRET",
     "credential_path": "./gcloud-filename.json",
-    "delay": 5,
+    "delay_seconds": 5,
     "users": [
         {
             "user": "twitter_user",

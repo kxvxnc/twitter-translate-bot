@@ -30,7 +30,7 @@ def main():
     try:
         threads = []
         for user in config["users"]:
-            thread = threading.Thread(target=twitter.TwitterUser, args=(user["user"], config["delay"], user["lang"], user["replies"], api))
+            thread = threading.Thread(target=twitter.TwitterUser, args=(user["user"], config["delay_seconds"], user["lang"], user["replies"], api))
             threads.append(thread)
             thread.start()
             logger.success(f"Thread started for user: {user['user']}")

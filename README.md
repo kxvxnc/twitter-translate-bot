@@ -38,7 +38,7 @@ project on the dashboard with Read and Write permissions
     "credential_path": "./gcloud-filename.json",
 ```
 5. Edit the `config.json` for custom configuration
-* `"delay"` is how many seconds it sleeps between monitoring
+* `"delay_seconds"` is how many seconds it sleeps between monitoring
 * `"user"` is the @ of the user you want to monitor
 * You can choose if you want to monitor for replies by setting `"replies"` to `true` or `false`
 * `"lang"` can be any language in `languages.txt`
