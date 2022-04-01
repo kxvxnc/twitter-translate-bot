@@ -1,5 +1,0 @@
-six==1.15.0
-tweepy==3.8.0
-colored==1.4.2
-protobuf==3.19.4
-google-cloud-translate==2.0.1
