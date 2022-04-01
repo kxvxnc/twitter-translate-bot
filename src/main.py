@@ -38,9 +38,9 @@ def main():
             thread = threading.Thread(target=twitter.TwitterUser, args=(
                 user["user"], config["delay_seconds"], user["lang"],
                 user["replies"], api))
-        threads.append(thread)
-        thread.start()
-        logger.success(f"Thread started for user: {user['user']}")
+            threads.append(thread)
+            thread.start()
+            logger.success(f"Thread started for user: {user['user']}")
     except Exception as e:
         logger.error(f"Error running main.py.\n{e}")
 
