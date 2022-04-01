@@ -1,4 +1,5 @@
 # Twitter Translate Bot
+[![CodeFactor](https://www.codefactor.io/repository/github/kxvxnc/twitter-translate-bot/badge)](https://www.codefactor.io/repository/github/kxvxnc/twitter-translate-bot)
 
 This bot monitors user(s) for new tweets every x seconds and automatically replies with a translated version of the original tweet.
 
@@ -25,17 +26,17 @@ We're not done yet! We still need some tokens and configurations to run it.
 
 1. Apply for a twitter [developer account](https://developer.twitter.com/en/application/use-case) and create a new 
 project on the dashboard with Read and Write permissions
-2. Generate your consumer API keys and authentication tokens and put them in the `config.json` file
+2. Create a `.env` file in the root directory similar to the `.env.example` file and fill in your keys
 ```
-    "consumer_key": "YOUR API KEY",
-    "consumer_secret": "YOUR API SECRET",
-    "access_token": "YOUR ACCESS TOKEN",
-    "access_token_secret": "YOUR ACCESS TOKEN SECRET",
+CONSUMER_KEY=KEY
+CONSUMER_SECRET=SECRET
+ACCESS_TOKEN=TOKEN
+ACCESS_TOKEN_SECRET=TOKEN_SECRET
 ```
 3. Create a [Google Cloud console project](https://cloud.google.com/translate/docs/basic/setup-basic) and enable the google translate API.
-4. Download the private key as a JSON file into the project directory and paste the path in `config.json`
+4. Download the private key as a JSON file into the `src` directory and edit the filename in the `.env` file
 ```
-    "credential_path": "./gcloud-filename.json",
+CREDENTIAL_PATH=src/gcloud_filename.json
 ```
 5. Edit the `config.json` for custom configuration
 * `"delay_seconds"` is how many seconds it sleeps between monitoring
@@ -52,17 +53,19 @@ Note: Keep the requests to 900 every 15 minutes; don't exceed 1 request per seco
 This project can be ran on localhost and Docker but has not been tested for large-scale use.
 
 ### Localhost
-1. `pip install -r requirements.txt`
-2. `python3 main.py`
+1. `pip install pipenv`
+2. `pipenv install`
+3. `pipenv run python3 src/main.py`
 
 ### Docker
 1. `docker build -t image_name .`
-2. `docker run image_name`
+2. `docker run --env-file .env image_name`
 
 
 ## Contributing
 
 If you would like to contribute, please fork the repository and use a feature branch. Pull requests are welcome.
+
 
 ## Links
 
