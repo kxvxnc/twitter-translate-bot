@@ -11,8 +11,9 @@ class Logger:
             self.identifier = "[{} {}]".format(title, id_num)
 
     def generate_text(self, identifier, tag, msg):
-        current_time = datetime.now().strftime("%I:%M:%S.%f %p")
-        return f"[{current_time}] {identifier} [{tag}] -> {msg}"
+        timestamp_now = datetime.now()
+        timestamp_string = f"{timestamp_now:%I:%M:%S.%f %p}"
+        return f"[{timestamp_string}] {identifier} [{tag}] -> {msg}"
 
     def alert(self, msg, tag="ALERT"):
         text = self.generate_text(self.identifier, tag, msg)
